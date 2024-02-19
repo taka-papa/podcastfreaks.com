@@ -3,16 +3,17 @@
 import _ from 'lodash'
 import consola from 'consola'
 import 'date-utils'
-import fetchTwitter from './scripts/fetch-twitter'
+import fetchTwitter from './scripts/fetch-twitter.js'
 import fileExtension from 'file-extension'
 import fs from 'fs'
 import moment from 'moment'
 import nodeCleanup from 'node-cleanup'
-import PFUtil from './scripts/pf-util'
-import rss from './data/rss.json'
-import serializeError from 'serialize-error'
+import PFUtil from './scripts/pf-util.js'
+import rss from './data/rss.json' assert { type: 'json' }
+import {serializeError} from 'serialize-error'
 import shell from 'shelljs'
-import { sleep } from 'sleep'
+import pkg from 'sleep';
+const { sleep } = pkg;
 import wget from 'node-wget-promise'
 import xml2js from 'xml2js'
 import { promisify } from 'util'
@@ -22,7 +23,7 @@ import {
   RSS_DIR,
   COVER_DIR,
   BUILD_INFO
-} from './scripts/constants'
+} from './scripts/constants.js'
 
 // ----------------
 // Detect arguments

@@ -4,8 +4,8 @@ import _ from 'lodash'
 import moment from 'moment'
 import Twitter from 'twitter'
 import TwitterFollowersCount from 'twitter-followers-count'
-
-require('dotenv').config()
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const tfc = new TwitterFollowersCount({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
