@@ -15,7 +15,9 @@ import shell from 'shelljs'
 import pkg from 'sleep';
 const { sleep } = pkg;
 import wget from 'node-wget-promise'
-import xml2js from 'xml2js'
+import { XMLParser } from "fast-xml-parser";
+const parser = new XMLParser();
+
 import { promisify } from 'util'
 import {
   RFC822,
@@ -24,6 +26,12 @@ import {
   COVER_DIR,
   BUILD_INFO
 } from './scripts/constants.js'
+import httpRequest from './scripts/request.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // ----------------
 // Detect arguments
@@ -36,7 +44,6 @@ const NO_TWITTER = args.includes('--no-twitter') // to cancel twitter data fetch
 
 const util = new PFUtil()
 const readFile = promisify(fs.readFile)
-const xmlToJSON = promisify((new xml2js.Parser({explicitArray: false})).parseString)
 const writeFile = promisify(fs.writeFile)
 
 let episodes_in_2weeks = []
@@ -49,11 +56,11 @@ let downloads_backup = null
 
 const error = function(label, rss, error){
   if(error) {
-    consola.error(`${label} | ${rss} | ${error}`)
+    console.error(`${label} | ${rss} | ${error} | ${error.stack}`)
     errors.push({label, rss, error: serializeError(error)})
   }
   else {
-    consola.error(`${label} | ${rss}`)
+    console.error(`${label} | ${rss}`)
     errors.push({label, rss})
   }
 
@@ -63,44 +70,39 @@ process.on('unhandledRejection', console.dir)
 
 const fetchFeed = async key => {
   const src = rss[key].feed
-  const dist_rss = `${RSS_DIR}/${key}.rss`
+  let dist_rss = null
 
   // Handling errors
 
   //------------------
 
   // Download RSS (try 3 times)
-  let err = ''
-  let download = false
-  let triesCounter = 0
-  while (triesCounter < 2) {
+  const retryCount = 1
+  for (let triesCounter = 0; triesCounter < retryCount; ++triesCounter) {
     try {
-      download = await wget(src, { output: dist_rss }).catch((e) => { err = e })
+      dist_rss = await httpRequest(src)
       break
     } catch (e) {
-      consola.error(e)
+      error('wget', key, e)
+      console.error(e.stack)
+      if (triesCounter === retryCount - 1) return
+      await sleep(2)
     }
-    consola.log(`wget fail : #${triesCounter}`)
-    await sleep(2)
-    triesCounter++
   }
 
-  if (!download) {
-    error('wget', dist_rss, err)
-    return // catch内では、fetchFeedを抜けられないのでここでreturn
+  let json = null
+  try {
+    json = await parser.parse(dist_rss)
+  } catch (e) {
+    console.error(key)
+    console.error(e)
+    console.error(e.stack)
+    return
   }
 
-  // Read RSS
-  const xml = await readFile(`${__dirname}/${dist_rss}`).catch(() => { return })
-  if(!xml){
-    error('readFile', dist_rss)
-    return // catch内では、fetchFeedを抜けられないのでここでreturn
-  }
-
-  const json = await xmlToJSON(xml).catch(() => { return })
-  if(!json){
-    error('xmlToJSON', dist_rss)
-    return // catch内では、fetchFeedを抜けられないのでここでreturn
+  if (!json.rss) {
+    console.log(key, json)
+    return
   }
 
   // json.rss.channel.item must be Array
@@ -148,8 +150,8 @@ const fetchFeed = async key => {
     lastEpisodeLink: _.first(episodes).link,
     recentEpisodes: _.take(episodes, 5),
     fileServer: util.getFileServer(episodes),
-    durationAverage: util.getDurationAverage(episodes, dist_rss),
-    durationMedian: util.getDurationMedian(episodes, dist_rss),
+    durationAverage: util.getDurationAverage(episodes, key),
+    durationMedian: util.getDurationMedian(episodes, key),
     desciprtion: channel.description ? channel.description : null
   }
 }
@@ -171,7 +173,9 @@ const fetchFeed = async key => {
 
 
   // Parallel Execution https://qiita.com/jkr_2255/items/62b3ee3361315d55078a
-  await Promise.all(Object.keys(rss).map(async key => await fetchFeed(key))).catch((err) => { error('fetchFeed', err) })
+  for (const keys of _(rss).keys().chunk(20)) {
+    await Promise.all(keys.map(async key => await fetchFeed(key))).catch((err) => { error('fetchFeed', err) })
+  }
 
   if(!NO_TWITTER){
     consola.log('Start fetching twitter data...')
