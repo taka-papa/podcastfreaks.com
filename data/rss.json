@@ -164,18 +164,8 @@
     "twitter": null,
     "hashtag": "#ビットコイナー反省会"
   },
-  "bkkcast": {
-    "feed": "https://bkkcast.me/index.xml",
-    "twitter": "@bkkcast",
-    "hashtag": "#bkkcast"
-  },
   "blockchainjam": {
     "feed": "https://blockchainjam.libsyn.com/rss",
-    "twitter": null,
-    "hashtag": null
-  },
-  "blogging-life": {
-    "feed": "https://www.blogging-life.com/podcast/",
     "twitter": null,
     "hashtag": null
   },
@@ -193,11 +183,6 @@
     "feed": "https://capitalp.jp/feed/podcast",
     "twitter": "@capitalPjp",
     "hashtag": "#capitalp"
-  },
-  "cast-for-fun": {
-    "feed": "https://cast-for.fun/feed.xml",
-    "twitter": "@castforfun",
-    "hashtag": "#castforfun"
   },
   "clfreaks": {
     "feed": "https://clfreaks.org/rss",
@@ -226,11 +211,6 @@
   },
   "conne-radi": {
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:206584965/sounds.rss",
-    "twitter": null,
-    "hashtag": null
-  },
-  "cookpad-design-radio": {
-    "feed": "https://anchor.fm/s/603e2d70/podcast/rss",
     "twitter": null,
     "hashtag": null
   },
@@ -304,11 +284,6 @@
     "twitter": "@dexfmpodcast",
     "hashtag": "#dexfm"
   },
-  "diverse-inc": {
-    "feed": "https://podcast.diverse-inc.com/feed.xml",
-    "twitter": "@diverse_inc",
-    "hashtag": "#diverse_inc"
-  },
   "dojocast": {
     "feed": "https://coderdojo.jp/podcasts.rss",
     "twitter": "@dojocast",
@@ -345,7 +320,7 @@
     "hashtag": "#double_m2fm"
   },
   "droidkaigi-fm": {
-    "feed": "https://droidkaigi.jp/fm/feed.xml",
+    "feed": "https://fm.droidkaigi.jp/feed.xml",
     "twitter": "@DroidKaigi",
     "hashtag": "#droidkaigi"
   },
@@ -434,11 +409,6 @@
     "twitter": null,
     "hashtag": "#ごりゅごcast"
   },
-  "gunosy": {
-    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:307374194/sounds.rss",
-    "twitter": null,
-    "hashtag": "#gunosyfm"
-  },
   "haijico": {
     "feed": "https://export.fm/feed",
     "twitter": "@exportfm",
@@ -486,11 +456,6 @@
   },
   "ia-podcast": {
     "feed": "https://feeds.feedburner.com/InformationArchitectsPodcast",
-    "twitter": null,
-    "hashtag": null
-  },
-  "ibm-developer-podcast": {
-    "feed": "https://feeds.transistor.fm/ibm-developer-podcast-japanese-edition",
     "twitter": null,
     "hashtag": null
   },
@@ -549,11 +514,6 @@
     "twitter": null,
     "hashtag": "#RadioSandbox"
   },
-  "kappa": {
-    "feed": "https://www.kappa.info-engineer.jp/feed/podcast",
-    "twitter": null,
-    "hashtag": null
-  },
   "karino2": {
     "feed": "https://anchor.fm/s/68ce140/podcast/rss",
     "twitter": null,
@@ -563,11 +523,6 @@
     "feed": "https://anchor.fm/s/2e9d2654/podcast/rss",
     "twitter": null,
     "hashtag": "#keepalivefm"
-  },
-  "kepc": {
-    "feed": "https://kepc.mookmookradio.com/feed/",
-    "twitter": null,
-    "hashtag": "#mook05"
   },
   "kimagurefm": {
     "feed": "https://anchor.fm/s/31978840/podcast/rss",
@@ -588,11 +543,6 @@
     "feed": "https://anchor.fm/s/713a0f4/podcast/rss",
     "twitter": "@koikifm",
     "hashtag": "#小粋fm"
-  },
-  "kumocast": {
-    "feed": "https://feeds.feedburner.com/tumblr/IkZP",
-    "twitter": "@kumocast",
-    "hashtag": "#kumocast"
   },
   "kyashfm": {
     "feed": "https://anchor.fm/s/4d007e0c/podcast/rss",
@@ -628,11 +578,6 @@
     "feed": "https://feeds.soundcloud.com/users/soundcloud:users:466377696/sounds.rss",
     "twitter": "@mazrica_jp",
     "hashtag": "#マツリカfm"
-  },
-  "meands-fm": {
-    "feed": "https://meands.fm/feed/podcast",
-    "twitter": null,
-    "hashtag": "#meands"
   },
   "meetsfm": {
     "feed": "https://anchor.fm/s/81ca130/podcast/rss",
@@ -688,11 +633,6 @@
     "feed": "https://feed.mozaic.fm/",
     "twitter": null,
     "hashtag": "#mozaicfm"
-  },
-  "msrs": {
-    "feed": "https://www.aivy.co.jp/BLOG_TEST/nagasawa/ms-radio.xml",
-    "twitter": null,
-    "hashtag": "#MSRS"
   },
   "mukimuki-cloud": {
     "feed": "https://anchor.fm/s/10161614/podcast/rss",
@@ -849,18 +789,13 @@
     "twitter": null,
     "hashtag": null
   },
-  "program": {
-    "feed": "https://radiotalk.jp/rss/c9506557ae909471",
-    "twitter": null,
-    "hashtag": null
-  },
   "propotype": {
     "feed": "https://propo.fm/channels/WUIGJ4FCFi9FRgL1AFy4/rss",
     "twitter": null,
     "hashtag": null
   },
   "prototype-fm": {
-    "feed": "https://www.prototype.fm/rss",
+    "feed": "https://feeds.acast.com/public/shows/prototypefm",
     "twitter": "@prototype_fm",
     "hashtag": "#prototypefm"
   },
@@ -895,7 +830,7 @@
     "hashtag": "#regonn_curry_fm"
   },
   "rehashfm": {
-    "feed": "https://rehash.fm/feed.xml",
+    "feed": "https://feeds.podcastics.com/podcastics/podcasts/rss/5199_2a7b208397764ef47f4ce403a9bbc9b0.rss",
     "twitter": "@rehashfm",
     "hashtag": "#rehashfm"
   },
@@ -979,11 +914,6 @@
     "twitter": null,
     "hashtag": "#shinjukult"
   },
-  "shirokane-kougyou": {
-    "feed": "https://shirokane-kougyou.fm/feed.xml",
-    "twitter": "@shirokane_fm",
-    "hashtag": "#白金鉱業fm"
-  },
   "siliconvalleyrw": {
     "feed": "https://siliconvalleyrw.com/podcast/?feed=podcast",
     "twitter": null,
@@ -1041,16 +971,6 @@
   },
   "sudachi": {
     "feed": "https://anchor.fm/s/9010910/podcast/rss",
-    "twitter": null,
-    "hashtag": null
-  },
-  "systemand": {
-    "feed": "https://systemand.online/feed.xml",
-    "twitter": "@system_genius",
-    "hashtag": "#systemand"
-  },
-  "tachikawas-environmental-sound": {
-    "feed": "https://tachikawa.soramugi.net/feed/podcast/tachikawas-environmental-sound",
     "twitter": null,
     "hashtag": null
   },

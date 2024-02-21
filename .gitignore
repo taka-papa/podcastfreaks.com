@@ -85,3 +85,5 @@ sw.*
 
 /static/downloads*
 package-lock.json
+
+venv/
